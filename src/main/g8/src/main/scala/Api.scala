@@ -8,8 +8,8 @@ object Api extends unfiltered.filter.Plan {
 
   import unfiltered.oauth.OAuth.XAuthorizedIdentity
 
-  import net.liftweb.json._
-  import net.liftweb.json.JsonDSL._
+  import org.json4s.JsonDSL._
+  import org.json4s.native.JsonMethods._
 
   def intent = {
     case GET(ContextPath(_,"/user") & request) =>
