@@ -1,18 +1,18 @@
 package com.example
 
+import com.typesafe.scalalogging.StrictLogging
 import unfiltered.request._
 import unfiltered.response._
-import org.clapper.avsl.Logger
 import unfiltered.oauth.{Consumer, Token}
 
 class App(host: Host, tokens: Tokens, consumers: Consumers)
-  extends Templates with unfiltered.filter.Plan {
+  extends Templates
+  with unfiltered.filter.Plan
+  with StrictLogging {
 
   import unfiltered.Cookie
   import QParams._
   import unfiltered.oauth.OAuth._
-
-  val log = Logger(classOf[App])
 
   def intent = {
     // index
@@ -30,8 +30,8 @@ class App(host: Host, tokens: Tokens, consumers: Consumers)
           nonempty("password can not be blank")
       } yield {
         val sid = host.createSession(username.get, password.get)
-        log.info("authenticated %s in session %s. back to authorize with token %s" format(username.get, sid, token.get))
-        ResponseCookies(Cookie("sid", sid)) ~>
+        logger.info("authenticated %s in session %s. back to authorize with token %s" format(username.get, sid, token.get))
+        SetCookies(Cookie("sid", sid)) ~>
           Redirect("/oauth/authorize?%s=%s" format(TokenKey, token.get))
       }
 
