@@ -11,7 +11,7 @@ object Server {
     val host = new Host
     val stores = Stores(host)
     val binding = SocketPortBinding(host = "localhost", port = port)
-    unfiltered.jetty.Server(binding :: Nil, Nil, None)
+    unfiltered.jetty.Server.portBinding(binding)
       .resources(new URL(getClass.getResource("/web/robots.txt"), "."))
       .context("/oauth") { _.filter(OAuth(stores)) }
       .filter(new App(host, stores.tokens, stores.consumers))
