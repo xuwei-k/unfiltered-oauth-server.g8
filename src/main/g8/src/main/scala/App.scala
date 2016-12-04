@@ -1,14 +1,14 @@
 package com.example
 
-import com.typesafe.scalalogging.StrictLogging
+import org.slf4j.LoggerFactory
 import unfiltered.request._
 import unfiltered.response._
 import unfiltered.oauth.{Consumer, Token}
 
 class App(host: Host, tokens: Tokens, consumers: Consumers)
-  extends Templates
-  with unfiltered.filter.Plan
-  with StrictLogging {
+  extends Templates with unfiltered.filter.Plan {
+
+  private[this] val logger = LoggerFactory.getLogger(this.getClass)
 
   import unfiltered.Cookie
   import QParams._

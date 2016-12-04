@@ -11,6 +11,5 @@ libraryDependencies ++= Seq(
   "net.databinder" %% "unfiltered-jetty" % "$unfiltered_version$",
   "net.databinder" %% "unfiltered-oauth" % "$unfiltered_version$",
   "net.databinder" %% "unfiltered-json4s" % "$unfiltered_version$",
-  "com.typesafe.scala-logging" %% "scala-logging" % "$scala_logging_version$",
   "ch.qos.logback" % "logback-classic" % "$logback_version$"
 )
