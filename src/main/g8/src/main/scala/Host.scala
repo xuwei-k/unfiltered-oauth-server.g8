@@ -22,11 +22,8 @@ class Host extends unfiltered.oauth.UserHost with Templates {
   }
 
   /** @return Some(UserLike) if the current user is logged in, None otherwise */
-  def current[T](r: HttpRequest[T]) = r match {
-    case Cookies(cookies) => cookies("sid") match {
-      case Some(Cookie(_, value, _, _, _, _, _, _)) => umap.get(value)
-      case _ => None
-    }
+  def current[T](r: HttpRequest[T]) = r("sid") match {
+    case Some(c) => umap.get(c.value)
     case _ => None
   }
 
