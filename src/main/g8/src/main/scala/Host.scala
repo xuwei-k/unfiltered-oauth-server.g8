@@ -1,6 +1,5 @@
 package com.example
 
-import unfiltered.Cookie
 import unfiltered.oauth.UserLike
 import unfiltered.request.{HttpRequest, Cookies, Params}
 import unfiltered.oauth.Consumer

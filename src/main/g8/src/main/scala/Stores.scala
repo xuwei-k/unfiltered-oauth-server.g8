@@ -1,7 +1,5 @@
 package com.example
 
-import unfiltered.request._
-import unfiltered.response._
 import unfiltered.oauth._
 
 case class ExampleConsumer(key: String, secret: String, name: String) extends Consumer
