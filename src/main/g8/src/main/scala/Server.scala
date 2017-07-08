@@ -8,7 +8,7 @@ import java.net.URL
 object Server {
   val port = 8080
 
-  def main(args: Array[String]) {
+  def main(args: Array[String]): Unit = {
     val host = new Host
     val stores = Stores(host)
     val binding = SocketPortBinding(host = "localhost", port = port)
