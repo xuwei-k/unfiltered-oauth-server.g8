@@ -10,7 +10,3 @@ matrix:
   include:
   - jdk: oraclejdk8
     scala: 2.12.4
-addons:
-  apt:
-    packages:
-    - oracle-java8-installer
